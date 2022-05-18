@@ -6,8 +6,9 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello word!")
-	var scanValue string
-	fmt.Fscan(os.Stdin, &scanValue)
-	fmt.Println(scanValue)
+	err := os.Chdir("os")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(os.Getwd())
 }

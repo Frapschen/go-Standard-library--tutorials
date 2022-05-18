@@ -8,7 +8,14 @@ the go sandard library tutorals for go SDK 1.17.9.
 
 ## 完成度
 ### 2/43:
-- [ ] fmt
+- [x] fmt
+- [ ] os
+  - [ ] file
+- [ ] io
+- [ ] bufio
+- [ ] path
+- [ ] strings
+- [ ] strconv
 - [ ] time
 - [ ] others...
 
