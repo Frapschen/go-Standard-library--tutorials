@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"testing"
 	"time"
 )
@@ -93,9 +94,91 @@ func Test_file(t *testing.T) {
 
 	fmt.Println(os.Hostname())
 
-	//这个函数 比较有意思
+	//这个两个函数 比较有意思 检测错误？
 	//fmt.Println(os.IsExist())
-
 	//fmt.Println(os.IsNotExist())
 
+	//c 是否是文件夹分割符号
+	fmt.Println(os.IsPathSeparator('/'))
+
+	// 是否有权限？
+	//fmt.Println(os.IsPermission())
+
+	//timeout error
+	//fmt.Println(os.IsTimeout())
+
+	//修改文件的所属
+	//fmt.Println(os.Lchown())
+
+	//修改文件的Link
+	//fmt.Println(os.Link())
+
+	//查找是否有特定的环境变量
+	show := func(key string) {
+		val, ok := os.LookupEnv(key)
+		if !ok {
+			fmt.Printf("%s not set\n", key)
+		} else {
+			fmt.Printf("%s=%s\n", key, val)
+		}
+	}
+
+	os.Setenv("SOME_KEY", "value")
+	os.Setenv("EMPTY_KEY", "")
+
+	show("SOME_KEY")
+	show("EMPTY_KEY")
+	show("MISSING_KEY")
+
+	//创建文件夹
+	err := os.Mkdir("testdir", 0750)
+	if err != nil && !os.IsExist(err) {
+		log.Fatal(err)
+	}
+	err = os.WriteFile("testdir/testfile.txt", []byte("Hello, Gophers!"), 0660)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	//创建文件路径
+	err = os.MkdirAll("test/subdir", 0750)
+	if err != nil && !os.IsExist(err) {
+		log.Fatal(err)
+	}
+	err = os.WriteFile("test/subdir/testfile.txt", []byte("Hello, Gophers!"), 0660)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	//创建临时文件夹 dir "./" 当前目录下
+	dir, err := os.MkdirTemp("./", "example")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer os.RemoveAll(dir) // clean up
+
+	file := filepath.Join(dir, "tmpfile")
+	if err := os.WriteFile(file, []byte("content"), 0666); err != nil {
+		log.Fatal(err)
+	}
+
+	logsDir, err := os.MkdirTemp("", "*-logs")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer os.RemoveAll(logsDir) // clean up
+
+	// Logs can be cleaned out earlier if needed by searching
+	// for all directories whose suffix ends in *-logs.
+	globPattern := filepath.Join(os.TempDir(), "*-logs")
+	matches, err := filepath.Glob(globPattern)
+	if err != nil {
+		log.Fatalf("Failed to match %q: %v", globPattern, err)
+	}
+
+	for _, match := range matches {
+		if err := os.RemoveAll(match); err != nil {
+			log.Printf("Failed to remove %q: %v", match, err)
+		}
+	}
 }

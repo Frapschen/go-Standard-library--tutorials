@@ -20,7 +20,7 @@ the go sandard library tutorals for go SDK 1.17.9.
 - [ ] others...
 
 ## 计划
-总的来说，每周了解一个stander library,达到：WW等级。
+总的来说，每周了解一个stander library,达到：WW等级。总结我自己用过的 function 对于第一眼看不到用处的先不管。 
 
 * 2022.4.30 开始学习 fmt
 
