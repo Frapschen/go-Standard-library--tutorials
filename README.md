@@ -1,5 +1,5 @@
 # go-Standard-library-tutorials
-the go sandard library tutorals for go SDK 1.17.9.
+the go sandard library(Function) tutorals for go SDK 1.17.9.
 
 ## Release
 ### go1.18 (released 2022-03-15)
@@ -9,8 +9,7 @@ the go sandard library tutorals for go SDK 1.17.9.
 ## 完成度
 ### 2/43:
 - [x] fmt
-- [ ] os
-  - [ ] file
+- [x] os
 - [ ] io
 - [ ] bufio
 - [ ] path

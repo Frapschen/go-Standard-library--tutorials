@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	err := os.Chdir("os")
+	err := os.Chdir("os-tutorlal")
 	if err != nil {
 		fmt.Println(err)
 	}

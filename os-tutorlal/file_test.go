@@ -11,11 +11,11 @@ import (
 
 func Test_file(t *testing.T) {
 	//切换工作目录
-	//err := os.Chdir("../fmt-tutorial")
+	//err := os-tutorlal.Chdir("../fmt-tutorial")
 	//if err != nil {
 	//	fmt.Println(err)
 	//}
-	//fmt.Println(os.Getwd())
+	//fmt.Println(os-tutorlal.Getwd())
 
 	//修改文件权限
 	if err := os.Chmod("example-file", 0644); err != nil {
@@ -23,7 +23,7 @@ func Test_file(t *testing.T) {
 	}
 
 	//修改文件的所属
-	//os.Chown()
+	//os-tutorlal.Chown()
 
 	//修改文件的时间信息
 	mtime := time.Date(2006, time.February, 1, 3, 4, 5, 0, time.UTC)
@@ -36,7 +36,7 @@ func Test_file(t *testing.T) {
 	os.Clearenv()
 
 	//将一个dir打开问一个文件目录
-	fs := os.DirFS("/Users/fraps/daocloud/github-code/go-Standard-library-tutorials/os")
+	fs := os.DirFS("/Users/fraps/daocloud/github-code/go-Standard-library-tutorials/os-tutorlal")
 	fmt.Println(fs)
 
 	//返回所有环境变量
@@ -46,7 +46,7 @@ func Test_file(t *testing.T) {
 	//返回执行当前进程的文件
 	fmt.Println(os.Executable())
 
-	//os.Exit(1)
+	//os-tutorlal.Exit(1)
 
 	//字符串替代
 	mapper := func(placeholderName string) string {
@@ -95,23 +95,23 @@ func Test_file(t *testing.T) {
 	fmt.Println(os.Hostname())
 
 	//这个两个函数 比较有意思 检测错误？
-	//fmt.Println(os.IsExist())
-	//fmt.Println(os.IsNotExist())
+	//fmt.Println(os-tutorlal.IsExist())
+	//fmt.Println(os-tutorlal.IsNotExist())
 
 	//c 是否是文件夹分割符号
 	fmt.Println(os.IsPathSeparator('/'))
 
 	// 是否有权限？
-	//fmt.Println(os.IsPermission())
+	//fmt.Println(os-tutorlal.IsPermission())
 
 	//timeout error
-	//fmt.Println(os.IsTimeout())
+	//fmt.Println(os-tutorlal.IsTimeout())
 
 	//修改文件的所属
-	//fmt.Println(os.Lchown())
+	//fmt.Println(os-tutorlal.Lchown())
 
 	//修改文件的Link
-	//fmt.Println(os.Link())
+	//fmt.Println(os-tutorlal.Link())
 
 	//查找是否有特定的环境变量
 	show := func(key string) {
@@ -161,7 +161,7 @@ func Test_file(t *testing.T) {
 	if err := os.WriteFile(file, []byte("content"), 0666); err != nil {
 		log.Fatal(err)
 	}
-
+	//使用匹配模式
 	logsDir, err := os.MkdirTemp("", "*-logs")
 	if err != nil {
 		log.Fatal(err)
@@ -180,5 +180,61 @@ func Test_file(t *testing.T) {
 		if err := os.RemoveAll(match); err != nil {
 			log.Printf("Failed to remove %q: %v", match, err)
 		}
+	}
+
+	//返回系统调用错误
+	//os-tutorlal.NewSyscallError()
+
+	//开启一个管道，从r 中读取 w中写入
+	os.Pipe()
+
+	//从文件中读取数据
+	data, err := os.ReadFile("testdata/hello")
+	if err != nil {
+		log.Fatal(err)
+	}
+	os.Stdout.Write(data)
+
+	//读取link
+	//os.Readlink()
+
+	//删除文件或文件夹
+	//os.Remove()
+
+	//删除所有路径下所有的文件，文件夹
+	//os.RemoveAll()
+
+	//重命名
+	//os.Rename()
+
+	//比较两个文件是否相同
+	//os.SameFile()
+
+	//创建文件链接
+	//os.Symlink()
+
+	//返回默认临时文件夹
+	os.TempDir()
+
+	//剪裁文件？
+	//os.Truncate()
+
+	//取消环境变量
+	os.Setenv("TMPDIR", "/my/tmp")
+	defer os.Unsetenv("TMPDIR")
+
+	//获取用户缓存文件夹
+	os.UserCacheDir()
+
+	//获取用户配置文件夹
+	os.UserConfigDir()
+
+	//获取用户home文件夹
+	os.UserHomeDir()
+
+	// 数据写入文件
+	err = os.WriteFile("testdata/hello", []byte("Hello, Gophers!"), 0666)
+	if err != nil {
+		log.Fatal(err)
 	}
 }

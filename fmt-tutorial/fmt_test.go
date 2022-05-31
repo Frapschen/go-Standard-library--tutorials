@@ -60,7 +60,7 @@ func Test_scan_go(t *testing.T) {
 	fmt.Println(i, b, s)
 	fmt.Println(n)
 
-	//Scan系列 从 os.studin 读取数据
+	//Scan系列 从 os-tutorlal.studin 读取数据
 	//fmt.Scan(&fscan1, &fscan2, fscan3)
 	//fmt.Scanln()
 	//fmt.Scanf()
