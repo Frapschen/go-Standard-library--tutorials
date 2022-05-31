@@ -10,7 +10,7 @@ the go sandard library(Function) tutorals for go SDK 1.17.9.
 ### 2/43:
 - [x] fmt
 - [x] os
-- [ ] io
+- [x] io
 - [ ] bufio
 - [ ] path
 - [ ] strings
