@@ -12,4 +12,4 @@ jobs:
           java-version: '11'
           # Java distribution. See the list of supported distributions in README file
           distribution: 'zulu'
-      - run: java -cp java HelloWorldApp
+      - run: java
