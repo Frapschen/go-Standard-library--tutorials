@@ -47,7 +47,7 @@ func Test_func_Tick(t *testing.T) {
 }
 
 func Test_type_Duration(t *testing.T) {
-	d, _ := time.ParseDuration("100ms")
+	d, _ := time.ParseDuration("100.10ms")
 	fmt.Println(d)
 
 	// Since

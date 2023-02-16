@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func Test_file(t *testing.T) {
+func Test_func(t *testing.T) {
 	//切换工作目录
 	//err := os-tutorlal.Chdir("../fmt-tutorial")
 	//if err != nil {
@@ -237,4 +237,8 @@ func Test_file(t *testing.T) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func Test_type_DirEntry(t *testing.T) {
+
 }
