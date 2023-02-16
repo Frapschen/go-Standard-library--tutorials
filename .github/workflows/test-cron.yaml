@@ -31,9 +31,11 @@ on:
 
 jobs:
   log-the-inputs:
+    if: github.actor == 'Frapschen' || github.actor == 'JaredTan95'
     runs-on: ubuntu-latest
     steps:
       - run: |
+          
           echo "Log level: $LEVEL"
           echo "Tags: $TAGS"
           echo "Environment: $ENVIRONMENT"
