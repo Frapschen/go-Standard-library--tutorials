@@ -34,8 +34,11 @@ jobs:
     if: github.actor == 'Frapschen' || github.actor == 'JaredTan95'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
       - run: |
-          
+          ls -al
           echo "Log level: $LEVEL"
           echo "Tags: $TAGS"
           echo "Environment: $ENVIRONMENT"
